@@ -3,12 +3,15 @@
 from __future__ import annotations
 
 import os
-from collections.abc import AsyncIterator
+from typing import TYPE_CHECKING
 from uuid import uuid4
 
 import pytest
 
 from ragsmith import PgVectorStore
+
+if TYPE_CHECKING:
+    from collections.abc import AsyncIterator
 
 
 def _require(name: str) -> str:

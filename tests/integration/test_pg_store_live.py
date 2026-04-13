@@ -9,7 +9,7 @@ from ragsmith import Document
 pytestmark = pytest.mark.integration
 
 
-async def test_upsert_and_similarity_search(pg_store) -> None:  # noqa: ANN001
+async def test_upsert_and_similarity_search(pg_store) -> None:
     docs = [
         Document(content="alpha", embedding=[1.0, 0.0, 0.0, 0.0]),
         Document(content="beta", embedding=[0.0, 1.0, 0.0, 0.0]),
@@ -24,7 +24,7 @@ async def test_upsert_and_similarity_search(pg_store) -> None:  # noqa: ANN001
     assert results[0][1] == pytest.approx(0.0, abs=1e-6)
 
 
-async def test_upsert_is_idempotent(pg_store) -> None:  # noqa: ANN001
+async def test_upsert_is_idempotent(pg_store) -> None:
     doc = Document(content="hello", embedding=[0.5, 0.5, 0.5, 0.5], metadata={"v": 1})
     await pg_store.upsert([doc])
     doc.content = "hello updated"
