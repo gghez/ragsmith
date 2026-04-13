@@ -68,6 +68,39 @@ jobs:
           flags: unittests
           name: codecov-ragsmith
 
+  integration:
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ragsmith
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/ragsmith
+      VOYAGE_API_KEY: ${{ secrets.VOYAGE_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+      - run: uv python install 3.14
+      - run: uv sync --all-extras
+      - name: Integration tests (live Postgres + Voyage)
+        run: uv run pytest -m integration --no-cov
+
+      - name: Run quickstart example
+        if: env.VOYAGE_API_KEY != ''
+        run: uv run python examples/quickstart.py
+
   docs-build:
     needs: lint-and-test
     runs-on: ubuntu-latest

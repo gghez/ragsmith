@@ -84,9 +84,14 @@ addopts = [
     "--cov-report=xml",
     "--cov-fail-under=100",
     "--doctest-modules",
+    "-m",
+    "not integration",
 ]
 asyncio_mode = "auto"
 testpaths = ["tests", "src"]
+markers = [
+    "integration: requires a live Postgres + pgvector and/or Voyage API (opt-in via -m integration)",
+]
 
 [tool.coverage.run]
 branch = true

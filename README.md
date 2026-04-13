@@ -68,6 +68,18 @@ async def main() -> None:
 asyncio.run(main())
 ```
 
+## Tests
+
+```bash
+uv run pytest                              # unit + doctests, 100% coverage gate
+uv run pytest -m integration --no-cov      # live tests against pgvector + Voyage
+uv run python examples/quickstart.py       # end-to-end demo
+```
+
+Integration tests skip cleanly when `DATABASE_URL` / `VOYAGE_API_KEY` are
+absent. Start the local DB with `docker compose up -d` and source `.env`
+before running them.
+
 ## Documentation
 
 Full API reference: <https://gghez.github.io/ragsmith/>

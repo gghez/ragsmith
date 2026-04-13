@@ -8,7 +8,9 @@ import pytest
 
 
 @pytest.fixture(autouse=True)
-def _voyage_env(monkeypatch: pytest.MonkeyPatch) -> None:
+def _voyage_env(request: pytest.FixtureRequest, monkeypatch: pytest.MonkeyPatch) -> None:
+    if request.node.get_closest_marker("integration"):
+        return
     monkeypatch.setenv("VOYAGE_API_KEY", "test-key")
 
 
