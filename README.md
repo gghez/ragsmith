@@ -71,6 +71,26 @@ asyncio.run(main())
 
 Full API reference: <https://gghez.github.io/ragsmith/>
 
+## Releasing
+
+Releases are fully automated through GitHub Actions and PyPI Trusted
+Publishing (OIDC, no API token stored).
+
+1. Bump `version` in `pyproject.toml` and commit (e.g. `chore: bump to 0.2.0`).
+2. Tag and push:
+
+   ```bash
+   git tag v0.2.0
+   git push origin v0.2.0
+   ```
+
+3. The `Release` workflow runs `uv build`, publishes the sdist + wheel to
+   PyPI and creates a matching GitHub Release with the artifacts attached.
+
+One-time PyPI setup: register the project on PyPI as a
+[Trusted Publisher](https://docs.pypi.org/trusted-publishers/) pointing to
+`gghez/ragsmith`, workflow `release.yml`, environment `pypi`.
+
 ## License
 
 MIT
