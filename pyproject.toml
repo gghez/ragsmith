@@ -83,9 +83,10 @@ addopts = [
     "--cov-report=term-missing",
     "--cov-report=xml",
     "--cov-fail-under=100",
+    "--doctest-modules",
 ]
 asyncio_mode = "auto"
-testpaths = ["tests"]
+testpaths = ["tests", "src"]
 
 [tool.coverage.run]
 branch = true
