@@ -1,6 +1,6 @@
 [project]
 name = "ragsmith"
-version = "0.0.1"
+version = "0.0.2"
 description = "Async RAG toolkit on top of Postgres/pgvector and Voyage AI."
 readme = "README.md"
 license = { text = "MIT" }
