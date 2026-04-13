@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://gghez.github.io/ragsmith/</loc>
+         <lastmod>2026-04-13</lastmod>
+    </url>
+    <url>
+         <loc>https://gghez.github.io/ragsmith/api/SUMMARY/</loc>
+         <lastmod>2026-04-13</lastmod>
+    </url>
+    <url>
+         <loc>https://gghez.github.io/ragsmith/api/ragsmith/</loc>
+         <lastmod>2026-04-13</lastmod>
+    </url>
+    <url>
+         <loc>https://gghez.github.io/ragsmith/api/ragsmith/chunking/</loc>
+         <lastmod>2026-04-13</lastmod>
+    </url>
+    <url>
+         <loc>https://gghez.github.io/ragsmith/api/ragsmith/embeddings/</loc>
+         <lastmod>2026-04-13</lastmod>
+    </url>
+    <url>
+         <loc>https://gghez.github.io/ragsmith/api/ragsmith/retriever/</loc>
+         <lastmod>2026-04-13</lastmod>
+    </url>
+    <url>
+         <loc>https://gghez.github.io/ragsmith/api/ragsmith/store/</loc>
+         <lastmod>2026-04-13</lastmod>
+    </url>
+</urlset>
