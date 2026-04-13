@@ -16,6 +16,17 @@
 - Coverage: **100% gate** enforced both locally and in CI (`--cov-fail-under=100`).
 - Docstrings: **Google style** (`tool.ruff.lint.pydocstyle.convention = "google"`).
 
+## No silent rule bypasses
+
+Do **not** add `# noqa`, `# type: ignore`, `# pragma: no cover`, `ruff: noqa`, per-file ignores in `pyproject.toml`, or any other lint/type/coverage suppression **without first flagging it to the user and getting agreement**.
+
+The default is to fix the underlying code so it satisfies the rule. A suppression is a last resort, used only when the rule is genuinely wrong for the case at hand. When proposing one:
+
+- State which rule, on which line, and **why** the rule does not apply.
+- Wait for the user's go-ahead before committing it.
+
+This applies equally to relaxing global config (e.g. adding to `tool.ruff.lint.ignore`, lowering `mccabe.max-complexity`, dropping `--strict`, lowering the coverage gate). Touch the config and the user must know first.
+
 ## Documentation
 
 - Built with **MkDocs Material** + `mkdocstrings[python]`.
