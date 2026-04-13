@@ -49,9 +49,10 @@ def chunk_text(text: str, *, max_chars: int = 1000, overlap: int = 100) -> list[
             ``overlap`` is negative or greater than/equal to ``max_chars``.
 
     Example:
-        >>> chunks = chunk_text("Hello. World.", max_chars=8, overlap=2)
-        >>> [c.text for c in chunks]
-        ['Hello.', 'World.']
+        ```python
+        chunks = chunk_text("Hello. World.", max_chars=8, overlap=2)
+        assert [c.text for c in chunks] == ["Hello.", "World."]
+        ```
     """
     if max_chars <= 0:
         msg = "max_chars must be > 0"
