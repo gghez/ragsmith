@@ -1,6 +1,7 @@
 # ragsmith
 
 [![CI](https://github.com/gghez/ragsmith/actions/workflows/ci.yml/badge.svg)](https://github.com/gghez/ragsmith/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/gghez/ragsmith/branch/main/graph/badge.svg)](https://codecov.io/gh/gghez/ragsmith)
 [![Docs](https://img.shields.io/badge/docs-mkdocs-blue)](https://gghez.github.io/ragsmith/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
