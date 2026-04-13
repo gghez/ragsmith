@@ -59,19 +59,32 @@ jobs:
       - name: Pytest (100% coverage gate)
         run: uv run pytest
 
-  docs:
+  docs-build:
     needs: lint-and-test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: astral-sh/setup-uv@v4
         with:
           enable-cache: true
       - run: uv python install 3.14
       - run: uv sync --all-extras
-      - run: uv run mkdocs gh-deploy --force
+      - run: uv run mkdocs build --strict
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  docs-deploy:
+    needs: docs-build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
